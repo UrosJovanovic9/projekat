@@ -1,38 +1,353 @@
-.App {
+.Appdiv{
+  display: flex;
+  flex-direction: column;
+  padding-left: 35px;
+  background-color: white;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  padding-left: 35px;
+  background-color: white;
+}
+
+
+/* /////////////////////////////////////////////////////*/
+/* ///////////  NAVIGATION BAR ////////////////////////// */
+/* /////////////////////////////////////////////////// */
+.navigationBar {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  align-items: center;
+  min-height: 100px;
+  font-size: 2em;
+  /* padding-left: 75px; */
+  /* text-emphasis-color: rgb(219, 218, 218); */
+  color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-right: 20px;
+  padding-left: 30px;
+}
+
+.logo{
+  margin-top: 9px;
+  margin-left:15px;
+  margin-right: 50px;
+  font-size: 60px;
+}
+
+.dugmePretraga{
+  font-size: 25px;
+  color: black;
+  background-color:transparent ;
+  border: none;
+}
+.pretraga{
+  color: black;
+  margin-left: 50px;
+  padding-top:15px;
+  font-size: 30px;
+  border-top: none;
+  border-left: none;
+  border-right:none;
+  border-bottom: solid;
+  border-color: rgb(68, 96, 255);
+}
+
+.pretraga:focus {
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right:none;
+  border-bottom: solid;
+  border-color: rgb(68, 96, 255);
+}
+
+.search{
+  font-style: bold;
+  margin-left:70px;
+  font-size: 30px;
+}
+.serach:hover{
+  color: rgb(68, 96, 255);
+}
+
+.destinacije{
+  padding-top: 10px;
+  font-style: bold;
+  color: black;
+  text-decoration: none;
+}
+
+.destinacije:hover{
+  color: rgb(68, 96, 255);
+  transition: 0.5s;
+}
+
+.pregled{
+  padding-top: 10px;
+  font-style: bold;
+  color: black;
+  padding-left: 50px;
+  text-decoration: none;
+}
+
+.pregled:hover{
+  color: rgb(68, 96, 255);
+  transition: 0.5s;
+}
+
+.prijava{
+  padding-top: 10px;
+  font-style: bold;
+  font-style: underline;
+  color: black;
+  padding-left: 50px;
+  text-decoration: none;
+}
+
+.prijava:hover{
+  color: rgb(68, 96, 255);
+  transition: 0.5s;
+}
+
+.registracija{
+  padding-top: 10px;
+  font-style: bold;
+  color: black;
+  padding-left: 50px;
+  text-decoration: none;
+}
+
+.registracija:hover{
+  color: rgb(68, 96, 255);
+  transition: 0.5s;
+}
+
+
+
+
+/* ///////////////////////////////////////////////////////////////
+//////////////////KRAJ NAVIGATION BAR///////////////////////////
+////////////////////////////////////////////////////////////// */
+
+
+
+
+
+.nazivKontinenta{
+ margin-top: 30px; 
+ margin-left: 15px;
+}
+
+.gradovi{
+  display: flex;  
+  margin-top:50px;
+  color: black;
+}
+
+.jedanGrad{
+  position: relative;
+  text-align: center;
+  background-color: white;
+  color: black;
+  border-radius: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+
+
+
+.jedanGradNaslov{
+  font-style: bold;
+  font-size: 19px;
+  color: black;
+}
+
+.jedanGradOpis{
+  color: gray;
+}
+
+.slika{
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.slika:hover{
+  border: solid;
+  border-width: 1px;
+  border-color: rgb(68, 96, 255);
+  opacity: 0.8;
+  transition:0.2s;
+}
+
+.btn1 {
+  font-style: bold;
+  text-justify: center;
+  color: white;
+  font-size: 19px;
+  background-color:rgb(68, 96, 255);
+  margin: 5px;
+  border-radius: 20px;
+  border-width: 0px;
+}
+.btn1:hover{
+  font-style: bold;
+  background-color:transparent;
+  transition:0.2s;
+  color:rgb(68, 96, 255);
+}
+
+.btn2 {
+  font-style: bold;
+  text-justify: center;
+  color: white;
+  font-size: 19px;
+  background-color:rgb(68, 96, 255);
+  margin: 5px;
+  border-radius: 20px;
+  border-width: 0px;
+}
+.btn2:hover{
+  font-style: bold;
+  background-color:transparent;
+  transition: 0.2s;
+  color:rgb(68, 96, 255);
+}
+
+.btn3 {
+  font-style: bold;
+  text-justify: center;
+  color: white;
+  font-size: 19px;
+  background-color:rgb(68, 96, 255);
+  margin: 5px;
+  border-radius: 20px;
+  border-width: 0px;
+}
+.btn3:hover{
+  font-style: bold;
+  background-color:transparent;
+  transition: 0.2s;
+  color:rgb(68, 96, 255);
+}
+
+
+/* //////////////////////////////////////////////////////////
+/////////////// FORMA ZA PRIJAVU /////////////////////////
+///////////////////////////////////////////////////////// */
+
+
+
+.prijavaforma{
+  color:black;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.forma{
+  color:black;
+  margin-top: 100px;
+  margin-bottom: 75px;
+  margin-left: auto;
+  margin-right: auto;
+  width:40%;
+  border: 1px solid rgb(122, 122, 122);
+  border-radius: 30px;
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-left:60px;
+  padding-right:60px;
+  font-size:20px;
+  background-color:transparent;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.forma:hover{
+  border: 1px solid rgb(68, 96, 255);
+  
+}
+.form-group{
+  padding-top:20px;
+  width:100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.btnForma{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  position: center;
+  text-align: center;
+  width:60%;
+  border-radius: 30px;
+  
 }
 
-.App-link {
-  color: #61dafb;
+.dugme1{
+  border-radius: 10px !important;
+  position: center;
+  background-color:rgb(104, 126, 253);
+  color:black;
+  width: 100%;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dugme1:hover{
+  background-color:rgb(130, 149, 255);
 }
+
+.btnForma1{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: -20px !important;
+  position: center;
+  text-align: center;
+  width:60%;
+  border-radius: 30px;
+  
+}
+
+.dugme2{
+  border-radius: 10px !important;
+  position: center;
+  color:black;
+  width: 100%;
+  text-align: center;
+  background-color:transparent !important;
+}
+
+.dugme2:hover{
+  border-color: rgb(68, 96, 255);
+}
+
+.dugme3{ 
+  border-radius: 10px !important;
+  position: center;
+  color:black;
+  width: 100%;
+  text-align: center;
+  background-color:transparent !important;
+  margin-bottom: 45px;
+}
+
+.dugme3:hover{
+  border-color: rgb(68, 96, 255);
+}
+
+
+/* /////////////////////////////////////////////////////
+/////////////////KRAJ FORME ZA PRIJAVU////////////////
+//////////////////////////////////////////////////// */
+
+
+
+
+/* 
+////////////////////////////////////////////////////////////
+////////// FORMA REGISTRACIJA //////////////////////////////
+///////////////////////////////////////////////////////////// */
+
+
