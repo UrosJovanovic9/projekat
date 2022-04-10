@@ -14,4 +14,53 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
 
+    <script>
+
+
+      function sortirajOpadajuce() {
+      var tabela1, redovi1, promena1, i1, x1, y1, menjaj1;
+      tabela1 = document.getElementById("myTable");
+      promena1 = true;
+      while (promena1) {
+        promena1 = false;
+        redovi1 = tabela1.rows;
+        for (i1 = 1; i1 < (redovi1.length - 1); i1++) {
+          menjaj1 = false;
+          x1 = redovi1[i1].getElementsByTagName("TD")[0];
+          y1 = redovi1[i1 + 1].getElementsByTagName("TD")[0];
+          if (x1.innerHTML.toLowerCase() > y1.innerHTML.toLowerCase()) {
+            menjaj1 = true;
+            break;
+          }
+        }
+        if (menjaj1) {
+          redovi1[i1].parentNode.insertBefore(redovi1[i1 + 1], redovi1[i1]);
+          promena1 = true;
+        }
+      }
+    }
+    
+    
+    function funkcijaZaPretragu() {
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+    
+    
+      </script>
+
 </html>

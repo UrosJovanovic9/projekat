@@ -7,6 +7,13 @@ function FormaPrijava() {
 		let path = `/registracija/*`;
 		navigate(path);
 	};
+
+	let navigate1 = useNavigate();
+	const RouteChange1 = () => {
+		let path = `/promenaLozinke/*`;
+		navigate1(path);
+	};
+
 	return (
 		<div>
 			<form className="forma">
@@ -27,8 +34,8 @@ function FormaPrijava() {
 					</button>
 				</div>
 				<div className="btnForma1">
-					<button className="dugme2" type="submit">
-						Zaboravljena lozinka?
+					<button className="dugme2" type="submit" onClick={RouteChange1}>
+						Promeni lozinku?
 					</button>
 				</div>
 				<div className="btnForma1">
