@@ -4,7 +4,6 @@ import { FiMoreHorizontal } from 'react-icons/fi';
 import { VscChromeClose } from 'react-icons/vsc';
 import { useState } from 'react';
 
-
 function JedanGrad({ grad, dodaj, ukloni }) {
 	const [ opisGrada, setOpisGrada ] = useState('');
 	const [ i, seti ] = useState(0);
