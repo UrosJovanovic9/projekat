@@ -206,6 +206,11 @@ const [ ukupno, setUkupno ] = useState(0);
           path = "/"
           element ={
             <>
+      <div className="jumbotron">
+  <h1 class="display-1">Dobro došli!</h1>
+  <p class="lead">Ovde možete rezervisati Vaše putovanje i izabrati neku od najatraktivnijih destinacija na svetu i to po najpovoljnijim cenama.</p>
+  {/* <a class="btn btn-primary btn-lg" href="#" role="button">Saznaj vise</a> */}
+</div>
             <h1 className="nazivKontinenta">Trenutne destinacije</h1>
             <Gradovi gradovi = {gradovi} dodaj = {dodajGrad} ukloni = {ukloniGrad}/>
             </>
