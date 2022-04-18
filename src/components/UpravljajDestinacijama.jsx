@@ -1,6 +1,10 @@
 import React from 'react';
+import { useState } from 'react';
 
 function UpravljajDestinacijama() {
+
+	const [show, setShow] = useState(false)
+
 	return (
 
         <>
@@ -38,7 +42,45 @@ function UpravljajDestinacijama() {
 			</div>
 		</div>
 
-        <button className="dugmeDodajNoviGrad">Dodaj novi grad</button>
+        <button onClick={() => setShow(true)} className="dugmeDodajNoviGrad">Dodaj novi grad</button>
+
+		{show? <div className = 'formaZaUpravljanjeDestinacijama'>
+		<form className="forma">
+				<h2 className="prijavaforma" for="forma">
+					Dodaj novi grad
+				</h2>
+				<div className="form-group">
+					<label for="formGroupExampleInput">Naziv</label>
+					<input type="text" className="form-control" id="formGroupExampleInput" placeholder="Naziv" />
+				</div>
+				<div className="form-group">
+					<label for="formGroupExampleInput2">Drzava</label>
+					<input type="password" className="form-control" id="formGroupExampleInput2" placeholder="Drzava" />
+				</div>
+				<div className="form-group">
+					<label for="formGroupExampleInput">Naseljenost:</label>
+					<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Naseljenost" />
+				</div>
+				<div className="form-group">
+					<label for="formGroupExampleInput2">Valuta</label>
+					<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Valuta" />
+				</div>
+				<div className="form-group">
+					<label for="formGroupExampleInput2">Opis</label>
+					<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Opis" />
+				</div>
+				<div className="form-group">
+					<label for="formGroupExampleInput2">Cena</label>
+					<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Cena" />
+				</div>
+				<div className="btnForma">
+					<button className="dugmeUpravljajDestinacijama" type="submit">
+						Dodaj
+					</button>
+				</div>
+			</form>
+
+		</div> : null}
         </>
 	);
 }
