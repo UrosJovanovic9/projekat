@@ -4,12 +4,17 @@ import Gradovi from "./components/Gradovi";
 import FormaPrijava from "./components/FormaPrijava";
 import FormaRegistracija from "./components/FormaRegistracija";
 import NavigationBar from "./components/NavigationBar";
-import Beograd from "./img/Beograd1.jpg";
-import Berlin from  "./img/Berlin1.jpg";
-import Lisabon from "./img/Lisabon1.jpg"
-import London from "./img/London1.jpg";
-import Madrid from "./img/Madrid1.jpg";
-import Pariz from "./img/Pariz1.jpg";
+import Beograd from "./img/Beograd.jpg";
+import Berlin from  "./img/Berlin.jpg";
+import Lisabon from "./img/Lisabon.jpg"
+import London from "./img/London.jpg";
+import Madrid from "./img/Madrid.jpg";
+import Pariz from "./img/Pariz.jpg";
+import Amsterdam from "./img/Amsterdam.jpg";
+import Rim from "./img/Rim.jpg";
+import Bern from "./img/Bern.jpg";
+import Kopenhagen from "./img/Kopenhagen.jpg";
+import Oslo from "./img/Oslo.jpg";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Rezervacije from './components/Rezervacije';
@@ -31,127 +36,100 @@ const [ ukupno, setUkupno ] = useState(0);
       id: 1,
       broj: 0,
       naziv: "Beograd",
-      opis: "2002 | avanturistički",
+      opis: "Beograd | Srbija",
       slika: Beograd,
       cena: 300,
-      opisGrada: "Posle dugog letnjeg raspusta s užasnim Darslijevima, Hari Poter ne uspeva da se ukrca na voz za Hogvorts, školu čarobnjaštva i magije, kako bi pošao u drugu godinu. Harijeva jedina mogućnost transporta jeste čarobni leteći automobil, ali nažalost njime udara u vrednu (i problematičnu) Mlatarajuću vrbu. Ipak, sve to je mačji kašalj u poređenju s onim što čeka Harija te jeseni unutar ukletih zidova Hogvortsa. Jezivi, zlobni glasovi šapuću sa zidova samo Hariju i izgleda izvesno da će ga Drako Melfoj srediti. Uskoro nije samo Hari zabrinut za svoj opstanak dok se zastrašujuće stvari dešavaju u školi. Misteriozna svetlucava slova na zidu govore: Dvorana tajni je otvorena. Neprijatelji naslednika, čuvajte se. Ali šta to tačno znači?"
+      opisGrada: "Beograd je glavni i najnaseljeniji grad Republike Srbije i privredno, kulturno i obrazovno središte zemlje. Grad leži na ušću Save u Dunav, gde se Panonska nizija spaja sa Balkanskim poluostrvom. Beograd je upravno središte Grada Beograda, posebne teritorijalne jedinice sa svojom mesnom samoupravom. Jedan je od starijih gradova u Evropi."
     },
     {
       id: 2,
       broj: 0,
       naziv: "Pariz",
-      opis: "2001 | avanturistički",
+      opis: "Pariz | Francuska",
       slika: Pariz,
       cena: 350,
-      opisGrada: "Bestseler Dž. K. Rouling prerasta u ovu divnu fantastičnu avanturu Krisa Kolambusa. Na svoj 11. rođendan, Hari Poter (Danijel Redklif), koji živi nesrećno sa tetkom i tečom koji ga ne žele, od džina Hagrida (Robi Koltrejn) saznaje da je on zapravo siroče moćnih čarobnjaka. Ponuđeno mu je mesto u prestižnom Hogvortsu, internatu za čarobnjake koji postoji u svetu magije i fantazije izvan dosadnog sveta normalaca. U Hogvortsu, Hari brzo stiče nove prijatelje i počinje da sklapa kockice misteriozne smrti svojih roditelja, koja izgleda uopšte nije bila slučajna."
+      opisGrada: "Pariz je glavni i najveći grad Francuske. Nalazi se u centru Pariskog basena, nad rekom Senom (La Seine). Rekom je podeljen na dva dela: na severnu „Desnu obalu“ i na južnu, manju, „Levu obalu“. Grad predstavlja političko, ekonomsko, obrazovno i kulturno središte centralizovane francuske države, a i Evrope."
     },
     {
       id: 3,
       broj: 0,
       naziv: "Madrid",
-      opis: "2011 | avanturistički",
+      opis: "Madrid | Španija",
       slika: Madrid,
-      cena: 300,
-      opisGrada: "Ovo je Hari Poterova četvrta godina u školi čarobnjaštva Hogvorts! Hari, Ron i Hermion jedva čekaju međunarodno finale u kvidiču. Hari mašto o tome kako provodi vreme sa zavodljivom Čo Čang. On želi da bude normalan četrnaestogodišnji čarobnjak... Ali Hari nije normalan čak ni prema čarobnjačkim standardima. Ove godine, prvi put u više stotina godina, takmičenje će se održati između tri čarobnjačke škole, a takmičari će biti odabrani čarolijom u veoma opasnom događaju. Sada, dok Harija peče njegov ožiljak od munje, ukazujući na prisustvo zlog lorda Voldemorta, Vatreni pehar bira poslednjeg učesnika takmičenja, Harija Potera"
+      cena: 320,
+      opisGrada: "Madrid je glavni grad Kraljevine Španije. Region (Madrid sa okolinom) se sa oko 5 miliona stanovnika ubraja u najveće evropske metropole. Sam grad Madrid (bez predgrađa) je sa svojih 3,1 milion stanovnika, posle Londona i Berlina, treći najveći grad u Evropskoj uniji."
     },
     {
       id: 4,
       broj: 0,
       naziv: "Lisabon",
-      opis: "2009 | avanturistički",
+      opis: "Lisabon | Portugal",
       slika: Lisabon,
-      cena: 300,
-      opisGrada: "I dok Smrtožderi, ohrabreni povratkom Lorda Voldemorta prave haos i u svetu Normalaca i u svetu Čarobnjaka, Hari sumnja da nove opasnosti leže unutar samog Hogvortsa. Dambldor se žuri da pripremi Harija za konačni obračun za koji zna da se brzo približava i šalje ga na opasnu misiju da nađe ključ kojim će se otključati Voldemortova odbrana. U međuvremenu, učenike napada drugačiji neprijatelj, dok njihovi tinejdžerski hormoni divljaju: Harijevo prijateljstvo sa Đinom Vizli prerasta u nešto dublje, Lavender Braun gaji simpatije prema Ronu, Hermiona se guši od ljubomore... A kutija čokolade sa ljubavnim napitkom završava u pogrešnim rukama. Film je nominovan za Oskara za najbolje ostvarenje u kinematografiji."
+      cena: 310,
+      opisGrada: "Lisabon glavni je grad Portugalije. Ujedno je i najveći grad u državi i središte portugalske politike, privrede i kulture. Lisabon je takođe treće po veličini i značaju središte Iberijskog poluostrva, posle Madrida i Barselone. U samom gradu Lisabonu živi oko 550 hiljada stanovnika, ali Lisabon sa prigradskim naseljima (tzv. Veliki Lisabon) ima čak 2,9 miliona stanovnika, što predstavlja oko 25% stanovništva države. Grad je sedište istoimenog okruga Lisabon, gde čini jednu od opština."
     },
     {
       id: 5,
       broj: 0,
       naziv: "London",
-      opis: "2004 | avanturistički",
+      opis: "London | Engleska",
       slika: London,
-      cena: 300,
-      opisGrada: "Ovo je opis + " + " \n " + "Ovo je drugi opis \n" + "Ovo je treci opis" 
+      cena: 420,
+      opisGrada: "London glavni je grad Engleske i Ujedinjenog Kraljevstva. Kao važno naselja tokom gotovo 2000 godina, historija Londona započinje osnivanjem od strane Rimljana u doba cara Klaudija oko 43 godine nove ere kada dobiva ime Londinium." 
     },
     {
       id: 6,
       broj: 0,
       naziv: "Berlin",
-      opis: "2001 | avanturistički",
+      opis: "Berlin | Nemačka",
       slika: Berlin,
-      cena: 300,
-      opisGrada: "U prvom delu čuvenog remek-dela Dž.R.R. Tolkina, “Gospodar prstenova”, stidljivi mladi hobit Frodo nasleđuje običan zlatni prsten. On zna da prsten poseduje moć, ali ne i da se u njegovim rukama nalazi tajna opstanka – ili propasti – celog sveta. Sada, uz pomoć čarobnjaka, vilenjaka, patuljka, dvoje ljudi i trojice odanih prijatelja hobita, Fordo mora da postane najveći heroj koga je svet ikada video, da spasi zemlju i ljude koje voli."
+      cena: 420,
+      opisGrada: "Berlin je glavni grad Savezne Republike Nemačke i istovremeno jedna od njenih šesnaest država-pokrajina. Sa preko 3,4 miliona stanovnika je najmnogoljudnija i površinom od 892 km² najveća opština u zemlji. Drugi je najveći grad u Evropskoj uniji i centar šestomilionske metropolitanske regije Berlin/Brandenburg te aglomeracije koja broji 4,4 miliona ljudi."
     },
     {
       id: 7,
       broj: 0,
-      naziv: "Berlin",
-      opis: "2001 | avanturistički",
-      slika: Berlin,
-      cena: 300,
-      opisGrada: "U prvom delu čuvenog remek-dela Dž.R.R. Tolkina, “Gospodar prstenova”, stidljivi mladi hobit Frodo nasleđuje običan zlatni prsten. On zna da prsten poseduje moć, ali ne i da se u njegovim rukama nalazi tajna opstanka – ili propasti – celog sveta. Sada, uz pomoć čarobnjaka, vilenjaka, patuljka, dvoje ljudi i trojice odanih prijatelja hobita, Fordo mora da postane najveći heroj koga je svet ikada video, da spasi zemlju i ljude koje voli."
+      naziv: "Amsterdam",
+      opis: "Amsterdam | Holandija",
+      slika: Amsterdam,
+      cena: 415,
+      opisGrada: "Amsterdam je najveći grad Holandije. Osnovan je krajem 12. veka kao malo ribarsko mesto na obali reke Amstel. Danas je najveći grad u državi i finansijski i kulturni centar. U gradu živi 975 061 stanovnika[1] dok je broj stanovnika metropolskog teritorija oko 2 691 477. On je i dio velike konurbacije Randstad u kojoj živi 7.100.000 stanovnika"
     },
     {
       id: 8,
       broj: 0,
-      naziv: "Berlin",
-      opis: "2001 | avanturistički",
-      slika: Berlin,
-      cena: 300,
-      opisGrada: "U prvom delu čuvenog remek-dela Dž.R.R. Tolkina, “Gospodar prstenova”, stidljivi mladi hobit Frodo nasleđuje običan zlatni prsten. On zna da prsten poseduje moć, ali ne i da se u njegovim rukama nalazi tajna opstanka – ili propasti – celog sveta. Sada, uz pomoć čarobnjaka, vilenjaka, patuljka, dvoje ljudi i trojice odanih prijatelja hobita, Fordo mora da postane najveći heroj koga je svet ikada video, da spasi zemlju i ljude koje voli."
+      naziv: "Rim",
+      opis: "Rim | Italija",
+      slika: Rim,
+      cena: 390,
+      opisGrada: "Rim je glavni grad Italije i regije Lacio, takođe najveći i najbrojniji grad u Italiji sa oko 2,8 miliona stanovnika, i četvrti najveći grad u Evropskoj uniji. Na širem području grada živi nešto više od četiri miliona stanovnika. Rim se nalazi na zapadu centralnog dela Apeninskog poluostrva, na mestu gde se reka Anijen uliva u Tibar."
     },
     {
       id: 9,
       broj: 0,
-      naziv: "Berlin",
-      opis: "2001 | avanturistički",
-      slika: Berlin,
-      cena: 300,
-      opisGrada: "U prvom delu čuvenog remek-dela Dž.R.R. Tolkina, “Gospodar prstenova”, stidljivi mladi hobit Frodo nasleđuje običan zlatni prsten. On zna da prsten poseduje moć, ali ne i da se u njegovim rukama nalazi tajna opstanka – ili propasti – celog sveta. Sada, uz pomoć čarobnjaka, vilenjaka, patuljka, dvoje ljudi i trojice odanih prijatelja hobita, Fordo mora da postane najveći heroj koga je svet ikada video, da spasi zemlju i ljude koje voli."
+      naziv: "Bern",
+      opis: "Bern | Švajcarska",
+      slika: Bern,
+      cena: 510,
+      opisGrada: "Bern je glavni grad Švajcarske konfederacije, četvrti po veličini u državi (posle Ciriha, Ženeve i Bazela). Bern je i glavni grad i najveće naselje istoimenog Kantona Bern."
     },
     {
       id: 10,
       broj: 0,
-      naziv: "Berlin",
-      opis: "2001 | avanturistički",
-      slika: Berlin,
-      cena: 300,
-      opisGrada: "U prvom delu čuvenog remek-dela Dž.R.R. Tolkina, “Gospodar prstenova”, stidljivi mladi hobit Frodo nasleđuje običan zlatni prsten. On zna da prsten poseduje moć, ali ne i da se u njegovim rukama nalazi tajna opstanka – ili propasti – celog sveta. Sada, uz pomoć čarobnjaka, vilenjaka, patuljka, dvoje ljudi i trojice odanih prijatelja hobita, Fordo mora da postane najveći heroj koga je svet ikada video, da spasi zemlju i ljude koje voli."
+      naziv: "Kopenhagen",
+      opis: "Kopenhagen | Danska",
+      slika: Kopenhagen,
+      cena: 450,
+      opisGrada: "Kopenhagen je glavni i najveći grad Danske. Savremeni naziv je iskvaren oblik starog imena Købmandshavn koje znači „trgovačka luka“. Prostire se na površini od 526 km². U samom gradu živi oko 542 hiljade stanovnika, a na širem području oko 1,2 miliona."
     },
     {
       id: 11,
       broj: 0,
-      naziv: "Berlin",
-      opis: "2001 | avanturistički",
-      slika: Berlin,
-      cena: 300,
-      opisGrada: "U prvom delu čuvenog remek-dela Dž.R.R. Tolkina, “Gospodar prstenova”, stidljivi mladi hobit Frodo nasleđuje običan zlatni prsten. On zna da prsten poseduje moć, ali ne i da se u njegovim rukama nalazi tajna opstanka – ili propasti – celog sveta. Sada, uz pomoć čarobnjaka, vilenjaka, patuljka, dvoje ljudi i trojice odanih prijatelja hobita, Fordo mora da postane najveći heroj koga je svet ikada video, da spasi zemlju i ljude koje voli."
-    },
-    {
-      id: 12,
-      broj: 0,
-      naziv: "Berlin",
-      opis: "2001 | avanturistički",
-      slika: Berlin,
-      cena: 300,
-      opisGrada: "U prvom delu čuvenog remek-dela Dž.R.R. Tolkina, “Gospodar prstenova”, stidljivi mladi hobit Frodo nasleđuje običan zlatni prsten. On zna da prsten poseduje moć, ali ne i da se u njegovim rukama nalazi tajna opstanka – ili propasti – celog sveta. Sada, uz pomoć čarobnjaka, vilenjaka, patuljka, dvoje ljudi i trojice odanih prijatelja hobita, Fordo mora da postane najveći heroj koga je svet ikada video, da spasi zemlju i ljude koje voli."
-    },
-    {
-      id: 13,
-      broj: 0,
-      naziv: "Berlin",
-      opis: "2001 | avanturistički",
-      slika: Berlin,
-      cena: 300,
-      opisGrada: "U prvom delu čuvenog remek-dela Dž.R.R. Tolkina, “Gospodar prstenova”, stidljivi mladi hobit Frodo nasleđuje običan zlatni prsten. On zna da prsten poseduje moć, ali ne i da se u njegovim rukama nalazi tajna opstanka – ili propasti – celog sveta. Sada, uz pomoć čarobnjaka, vilenjaka, patuljka, dvoje ljudi i trojice odanih prijatelja hobita, Fordo mora da postane najveći heroj koga je svet ikada video, da spasi zemlju i ljude koje voli."
-    },
-    {
-      id: 14,
-      broj: 0,
-      naziv: "Berlin",
-      opis: "2001 | avanturistički",
-      slika: Berlin,
-      cena: 300,
-      opisGrada: "U prvom delu čuvenog remek-dela Dž.R.R. Tolkina, “Gospodar prstenova”, stidljivi mladi hobit Frodo nasleđuje običan zlatni prsten. On zna da prsten poseduje moć, ali ne i da se u njegovim rukama nalazi tajna opstanka – ili propasti – celog sveta. Sada, uz pomoć čarobnjaka, vilenjaka, patuljka, dvoje ljudi i trojice odanih prijatelja hobita, Fordo mora da postane najveći heroj koga je svet ikada video, da spasi zemlju i ljude koje voli."
+      naziv: "Oslo",
+      opis: "Oslo | Norveška",
+      slika: Oslo,
+      cena: 490,
+      opisGrada: "Oslo glavni je grad Norveške. Istovremeno to je i najveći grad države, u čijem metropolitenskom području živi oko 1/4 stanovništva Norveške. Grad je takođe jedini samostalni grad-okrug u državi, a vrši i ulogu upravnog sedišta okruga Akershus, koji okružuje Oslo i obuhvata njegova predgrađa. Oslo je kulturno, naučno i upravno središte Norveške. Grad je takođe važno središte trgovine, bankarstva, industrije i pomorstva Norveške i Evrope"
     },
   ]);
 
