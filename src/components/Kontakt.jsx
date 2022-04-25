@@ -18,13 +18,13 @@ function Kontakt() {
 					cumque at odit optio obcaecati, nesciunt molestiae nemo culpa veniam tempora enim perferendis
 					aspernatur? Veritatis natus placeat autem esse.
 				</p>
-				<p>
+				{/* <p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, totam dolorum cumque at odit optio
 					obcaecati, nesciunt molestiae nemo culpa veniam tempora enim perferendis aspernatur? Veritatis natus
 					placeat autem esse. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, totam dolorum
 					cumque at odit optio obcaecati, nesciunt molestiae nemo culpa veniam tempora enim perferendis
 					aspernatur? Veritatis natus placeat autem esse.
-				</p>
+				</p> */}
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, totam dolorum cumque at odit optio
 					obcaecati, nesciunt molestiae nemo culpa veniam tempora enim perferendis aspernatur? Veritatis natus
