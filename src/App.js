@@ -180,13 +180,21 @@ const [ ukupno, setUkupno ] = useState(0);
     <div className = "Appdiv">
     <NavigationBar nav = {1}></NavigationBar>
       <Routes>
+      <Route
+        path = "/"
+        element = {
+          <FormaPrijava/>
+        }
+        />
+
+
         <Route
-          path = "/"
+          path = "/turistickeDestinacije"
           element ={
             <>
       <div className="jumbotron">
-  <h1 class="display-1">Dobro došli!</h1>
-  <p class="lead">Ovde možete rezervisati Vaše putovanje i izabrati neku od najatraktivnijih destinacija na svetu i to po najpovoljnijim cenama.</p>
+  <h1 className="display-1">Dobro došli!</h1>
+  <p className="lead">Ovde možete rezervisati Vaše putovanje i izabrati neku od najatraktivnijih destinacija na svetu i to po najpovoljnijim cenama.</p>
   {/* <a class="btn btn-primary btn-lg" href="#" role="button">Saznaj vise</a> */}
 </div>
             <h1 className="nazivKontinenta">Trenutne destinacije</h1>
@@ -221,15 +229,12 @@ const [ ukupno, setUkupno ] = useState(0);
         }
         />
 
-
-
-
-        <Route
+        {/* <Route
         path = "/promenaLozinke/*"
         element = {
           <FormaPromenaLozinke/>
         }
-        />
+        /> */}
 
         <Route
         path = "/prijava/*"

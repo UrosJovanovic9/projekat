@@ -1,6 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function FormaRegistracija() {
+	let navigate = useNavigate();
+	const routeChange = () => {
+		let path = `/prijava`;
+		navigate(path);
+	};
+
 	return (
 		<div>
 			<form className="forma">
@@ -26,6 +33,12 @@ function FormaRegistracija() {
 				<div className="btnForma">
 					<button className="dugme1" type="submit">
 						Registracija
+					</button>
+				</div>
+
+				<div className="btnForma1">
+					<button className="dugme3" type="submit" onClick={routeChange}>
+						Prijavi se
 					</button>
 				</div>
 			</form>

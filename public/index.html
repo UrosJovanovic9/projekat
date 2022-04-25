@@ -17,7 +17,7 @@
   
 
       <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKYd34Pt-3-s6ZosJ3muiaOtjkNNpAV4A&callback=initMap&v=weekly&language=ja&region=JP"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCp2TeN4jSXWRV1JHlwiP6cbj-jiikvR9M&callback=initMap&v=weekly&language=ja&region=JP"
       async
     ></script>
       
@@ -81,8 +81,8 @@
             //     console.log("script is loaded")
             //     map = new google.maps.Map(document.getElementById("map"), {
             //       center:{
-            //         lat:45.3496,
-            //         lng:-75.7569,
+            //         lat:44.7981,
+            //         lng:20.4691,
             //       },
             //       zoom:16,
             //       mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -93,12 +93,22 @@
 
             
 
-            function initMap() {
-            const map = new google.maps.Map(document.getElementById("map"), {
-            center: { lat: 35.717, lng: 139.731 },
-            zoom: 8,
-            });
+//             function initMap() {
+//             var map = new google.maps.Map(document.getElementById('map'), {
+//             center: { lat: 44.7981, lng: 20.4691 },
+//             zoom: 17,
+//             });
+//  }
+
+
+ function initMap(){
+   var options = {
+     zoom : 17,
+     center: { lat: 44.7981, lng: 20.4691 }
+   }
+   var map = new google.maps.Map(document.getElementById('map'), options);
  }
+
 
     
       </script>

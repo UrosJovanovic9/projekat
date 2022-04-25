@@ -14,6 +14,7 @@ function JedanGrad({ grad, dodaj, ukloni }) {
 			setOpisGrada('');
 		}
 		seti(i + 1);
+		console.log(i);
 	}
 
 	return (

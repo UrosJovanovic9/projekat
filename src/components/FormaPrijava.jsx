@@ -33,11 +33,11 @@ function FormaPrijava() {
 						Prijava
 					</button>
 				</div>
-				<div className="btnForma1">
+				{/* <div className="btnForma1">
 					<button className="dugme2" type="submit" onClick={RouteChange1}>
 						Promeni lozinku?
 					</button>
-				</div>
+				</div> */}
 				<div className="btnForma1">
 					<button className="dugme3" type="submit" onClick={routeChange}>
 						Još uvek niste registrovani?

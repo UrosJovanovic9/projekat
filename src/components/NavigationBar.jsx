@@ -12,7 +12,7 @@ function NavigationBar({ nav }) {
 			{/* <div className="logo">
 				<MdTravelExplore />
 			</div> */}
-			<Link to="/" className="destinacije">
+			<Link to="/turistickeDestinacije" className="destinacije">
 				Turističke destinacije
 			</Link>
 
@@ -24,7 +24,7 @@ function NavigationBar({ nav }) {
 				Upravljaj rezervacijama
 			</Link>
 
-			<Link to="/kontakt" className="pregled">
+			<Link to="/kontakt" className="pregled" onClick = {window['initMap']}>
 				Kontakt
 			</Link>
 
