@@ -419,13 +419,20 @@
 
 }
 
-
 .mapa{
   margin-right:35px;
   margin-left:20px;
   border:2px solid #333;
   width:45vw;
   height:110%;
+}
+
+.kontaktTekst{
+  text-align: justify;
+}
+
+.kontaktPrviParagraf{
+  font-size: larger;
 }
 
 
