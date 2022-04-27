@@ -31,7 +31,17 @@ const [rezervisaniGrad, setRezervisaniGrad] = useState([]);
 const [ ukupno, setUkupno ] = useState(0);
 
 
-  const [gradovi] = useState([
+  const[gradoviBaza, setGradoviBaza] = useState();
+  useEffect(() => {
+		if(gradoviBaza == null){
+			axios.get('URL').then((res) => {
+				setGradoviBaza(res.data.gradoviBaza);
+			});
+		}
+	}, [gradoviBaza])
+
+
+  const [gradovi, setGradovi] = useState([
     {
       id: 1,
       broj: 0,
@@ -122,17 +132,20 @@ const [ ukupno, setUkupno ] = useState(0);
       cena: 450,
       opisGrada: "Kopenhagen je glavni i najveći grad Danske. Savremeni naziv je iskvaren oblik starog imena Købmandshavn koje znači „trgovačka luka“. Prostire se na površini od 526 km². U samom gradu živi oko 542 hiljade stanovnika, a na širem području oko 1,2 miliona."
     },
-    {
-      id: 11,
-      broj: 0,
-      naziv: "Oslo",
-      opis: "Oslo | Norveška",
-      slika: Oslo,
-      cena: 490,
-      opisGrada: "Oslo glavni je grad Norveške. Istovremeno to je i najveći grad države, u čijem metropolitenskom području živi oko 1/4 stanovništva Norveške. Grad je takođe jedini samostalni grad-okrug u državi, a vrši i ulogu upravnog sedišta okruga Akershus, koji okružuje Oslo i obuhvata njegova predgrađa. Oslo je kulturno, naučno i upravno središte Norveške. Grad je takođe važno središte trgovine, bankarstva, industrije i pomorstva Norveške i Evrope"
-    },
   ]);
 
+
+  // const dodajNoviGrad = () =>{
+  //   setGradovi([... gradovi, {
+  //     id : gradovi.length,
+  //     broj:0,
+  //     naziv: "Oslo",
+  //     opis:"Oslo | Norveška",
+  //     slika: Oslo,
+  //     cena: 330,
+  //     opisGrada: "Opis grada"
+  //   }])
+  // }
 
   const[token, setToken] = useState(); 
   function dodajToken(auth_token){
@@ -146,7 +159,7 @@ const [ ukupno, setUkupno ] = useState(0);
 
   function dodajGrad(id){
    
-    refresh();
+    // refresh();
 
     gradovi.forEach((grad) => {
       if(grad.id === id){
@@ -163,7 +176,7 @@ const [ ukupno, setUkupno ] = useState(0);
 
   function ukloniGrad(id){
     
-    refresh();
+    // refresh();
     
     gradovi.forEach((grad) => {
       if(grad.id === id){

@@ -1,7 +1,23 @@
 import React from 'react';
 import Dugme from './Dugme.jsx';
+import axios from 'axios';
+import { useState } from 'react';
 
 function Rezervacije({ gradoviRezervacije, ukupno }) {
+	const [ rezervacije, setRezervacije ] = useState([]);
+
+	function dodajRezervacije(e) {
+		gradoviRezervacije.map((grad) => {
+			setRezervacije(grad);
+			axios
+				.post('URL', rezervacije)
+				.then((res) => {
+					console.log(res.data);
+				})
+				.catch((e) => console.log(e));
+		});
+	}
+
 	return (
 		<div className="rezervacije">
 			<div>
@@ -30,6 +46,11 @@ function Rezervacije({ gradoviRezervacije, ukupno }) {
 			</div>
 			<div className="dugmeKomponenta">
 				<Dugme />
+			</div>
+			<div className="dugmeKomponenta">
+				<button className="dugmeSortiranje" onClick={dodajRezervacije}>
+					Potvrdi rezervaciju
+				</button>
 			</div>
 		</div>
 	);

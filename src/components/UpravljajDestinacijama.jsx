@@ -1,7 +1,24 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import FloatingLabel  from 'react-bootstrap-floating-label';
+import Form from 'react-bootstrap-floating-label'
+import axios from "axios";
 
 function UpravljajDestinacijama() {
+
+	// const[grad, setGrad] = useState({
+	// 	id:
+	// })
+
+	const[destinacije, setDestinacije] = useState();
+	useEffect(()=> {
+		if(destinacije == null){
+			axios.get("URL").then((res) => {
+				setDestinacije(res.data.destinacije);
+			})
+		}
+	}, [destinacije])
+
 
 	const [show, setShow] = useState(false)
 
@@ -19,9 +36,13 @@ function UpravljajDestinacijama() {
 						</tr>
 
 						<tr>
-							<td>Naziv</td>
-							<td> nesto 1</td>
-							<td> nesto 2</td>
+						{ destinacije == null ? <></> : destinacije.map((destinacija) => (
+							<tr key = {destinacija.id}>
+								<td>{destinacija.naziv}</td>
+								<td>{destinacija.atribut1}</td>
+								<td>{destinacija.atribut2}</td>
+							</tr>
+						))}
 						</tr>
 						<tr>
 							<td>Naziv dva</td>
@@ -46,12 +67,12 @@ function UpravljajDestinacijama() {
 
 		{show? <div className = 'formaZaUpravljanjeDestinacijama'>
 		<form className="forma">
-				<h2 className="prijavaforma" for="forma">
+				<h2 className="prijavaforma" htmlFor="forma">
 					Dodaj novi grad
 				</h2>
 				<div className="form-group">
 					<label for="formGroupExampleInput">Naziv:</label>
-					<input type="text" className="form-control" id="formGroupExampleInput" placeholder="Naziv" />
+					<input type="text" className="form-control" id="formGroupExampleInput1" placeholder="Naziv" />
 				</div>
 				<div className="form-group">
 					<label for="formGroupExampleInput2">Drzava:</label>
@@ -59,19 +80,19 @@ function UpravljajDestinacijama() {
 				</div>
 				<div className="form-group">
 					<label for="formGroupExampleInput">Naseljenost:</label>
-					<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Naseljenost" />
+					<input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Naseljenost" />
 				</div>
 				<div className="form-group">
 					<label for="formGroupExampleInput2">Valuta:</label>
-					<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Valuta" />
+					<input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Valuta" />
 				</div>
 				<div className="form-group">
-					<label for="formGroupExampleInput2">Opis:</label>
-					<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Opis" />
+				<label for="formGroupExampleInput2">Opis:</label>
+					<textarea type="text" class="form-control" id="formGroupExampleInput5" placeholder="Opis grada"/>
 				</div>
 				<div className="form-group">
 					<label for="formGroupExampleInput2">Cena:</label>
-					<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Cena" />
+					<input type="text" class="form-control" id="formGroupExampleInput6" placeholder="Cena" />
 				</div>
 				<div className="btnForma">
 					<button className="dugmeUpravljajDestinacijama" type="submit">
