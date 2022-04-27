@@ -133,6 +133,15 @@ const [ ukupno, setUkupno ] = useState(0);
       cena: 450,
       opisGrada: "Kopenhagen je glavni i najveći grad Danske. Savremeni naziv je iskvaren oblik starog imena Købmandshavn koje znači „trgovačka luka“. Prostire se na površini od 526 km². U samom gradu živi oko 542 hiljade stanovnika, a na širem području oko 1,2 miliona."
     },
+    {
+      id: 11,
+      broj: 0,
+      naziv: "Oslo",
+      opis: "Oslo | Norveška",
+      slika: Oslo,
+      cena: 370,
+      opisGrada: "Oslo glavni je grad Norveške. Istovremeno to je i najveći grad države, u čijem metropolitenskom području živi oko 1/4 stanovništva Norveške. Grad je takođe jedini samostalni grad-okrug u državi, a vrši i ulogu upravnog sedišta okruga Akershus, koji okružuje Oslo i obuhvata njegova predgrađa. Oslo je kulturno, naučno i upravno središte Norveške. Grad je takođe važno središte trgovine, bankarstva, industrije i pomorstva Norveške i Evrope."
+    },
   ]);
 
 
