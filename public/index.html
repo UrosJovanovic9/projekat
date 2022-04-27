@@ -28,7 +28,7 @@
     <script>
 
 
-      function sortirajOpadajuce() {
+      function sortirajOpadajuce(e) {
       var tabela1, redovi1, promena1, i1, x1, y1, menjaj1;
       tabela1 = document.getElementById("myTable");
       promena1 = true;
@@ -101,7 +101,8 @@
 //  }
 
 
- function initMap(){
+ function initMap(e){
+  //  e.preventDefault();
    var options = {
      zoom : 17,
      center: { lat: 44.7981, lng: 20.4691 }

@@ -2,7 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdTravelExplore } from 'react-icons/md';
 import { BsSearch } from 'react-icons/bs';
-function NavigationBar({ nav }) {
+import axios from "axios";
+function NavigationBar({ nav, token }) {
+
+	function handleLogout(){
+		var config = {
+			method: "post",
+			url : "URL",
+			headers : {
+				'Authorization' : "Bearer" + window.sessionStorage.getItem("auth_token"),
+			},
+		};
+		axios(config).then((res) => {
+			console.log(res.data);
+			window.sessionStorage.setItem("auth_token", null);
+		});
+	}
+
+
+
 	return (
 		<div className={nav === 1 ? 'navigationBar' : 'bottomBar'}>
 			{nav === 1 ? 
@@ -24,7 +42,7 @@ function NavigationBar({ nav }) {
 				Upravljaj rezervacijama
 			</Link>
 
-			<Link to="/kontakt" className="pregled" onClick = {window['initMap']}>
+			<Link to="/kontakt" className="pregled" onClick = {window['initMap']} >
 				Kontakt
 			</Link>
 
@@ -32,7 +50,8 @@ function NavigationBar({ nav }) {
 				Upravljaj destinacijama
 			</Link>
 
-			<Link to="/prijava" className="prijava" />
+			{token == null ? (<Link to="/prijava" className="pregled">Prijava</Link>) : (<Link to="/" className="pregled" onClick = {handleLogout}>Odjavi se</Link>)}
+			
 
 			<Link to="/promenaLozinke" className="pregled" />
 

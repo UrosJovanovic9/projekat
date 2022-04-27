@@ -133,6 +133,12 @@ const [ ukupno, setUkupno ] = useState(0);
     },
   ]);
 
+
+  const[token, setToken] = useState(); 
+  function dodajToken(auth_token){
+    setToken(auth_token);
+  }
+
   function refresh(){
     let noviGradovi = gradovi.filter((grad) => grad.broj > 0);
     setRezervisaniGrad(noviGradovi);
@@ -178,7 +184,7 @@ const [ ukupno, setUkupno ] = useState(0);
   return (
     <BrowserRouter className="App">
     <div className = "Appdiv">
-    <NavigationBar nav = {1}></NavigationBar>
+    <NavigationBar nav = {1} token = {token}></NavigationBar>
       <Routes>
       <Route
         path = "/"
@@ -216,7 +222,7 @@ const [ ukupno, setUkupno ] = useState(0);
         />
 
         <Route
-        path = "/kontakt/*"
+        path = "/kontakt"
         element = {
           <Kontakt/>
         }
@@ -239,7 +245,7 @@ const [ ukupno, setUkupno ] = useState(0);
         <Route
         path = "/prijava/*"
         element = {
-          <FormaPrijava/>
+          <FormaPrijava dodajToken = {dodajToken}/>
         }
         />
         <Route
