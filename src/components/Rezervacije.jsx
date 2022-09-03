@@ -49,7 +49,7 @@ function Rezervacije({ gradoviRezervacije, ukupno }) {
 			</div>
 			<div className="dugmeKomponenta">
 				<button className="dugmeSortiranje" onClick={dodajRezervacije}>
-					Potvrdi rezervaciju
+					Potvrdi rezervacije
 				</button>
 			</div>
 		</div>
