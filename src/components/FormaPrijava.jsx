@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
-function FormaPrijava({ dodajToken }) {
+function FormaPrijava({ dodajToken, dodajKorisnika }) {
 	const [ podaciKorisnika, setPodaciKorisnika ] = useState({
 		email: '',
 		password: ''
@@ -19,16 +19,40 @@ function FormaPrijava({ dodajToken }) {
 	}
 
 	function handleLogin(e) {
+		// e.preventDefault();
+		// axios
+		// 	.post('http://127.0.0.1:8000/api/login', podaciKorisnika)
+		// 	.then((res) => {
+		// 		console.log(res.data);
+		// 		window.sessionStorage.setItem('auth_token', res.data.access_token);
+		// 		dodajToken(res.data.access_token); // Funkcija
+		// 		navigateDestinacije(`/turistickeDestinacije`);
+		// 	})
+		// 	.catch((e) => console.log(e));
+
 		e.preventDefault();
-		axios
-			.post('URL', podaciKorisnika)
-			.then((res) => {
-				console.log(res.data);
-				window.sessionStorage.setItem('auth_token', res.data.access_token);
-				dodajToken(res.data.access_token); // Funkcija
+		var config = {
+			method: 'post',
+			url: 'http://127.0.0.1:8000/api/login',
+			headers: {
+				Authorization: 'Bearer ' + window.sessionStorage.getItem('auth_token')
+			},
+			data: podaciKorisnika
+		};
+
+		axios(config)
+			.then(function(response) {
+				console.log(response.data);
+				window.sessionStorage.setItem('auth_token', response.data.access_token);
+				dodajToken(response.data.access_token); // Funkcija
+				dodajKorisnika(response.data.data.id);
 				navigateDestinacije(`/turistickeDestinacije`);
 			})
-			.catch((e) => console.log(e));
+			.catch(function(error) {
+				console.log(error);
+				alert('Neuspesno logovanje');
+				navigateDestinacije(`/`);
+			});
 	}
 
 	///////////////////////////////////////////////////
@@ -47,6 +71,8 @@ function FormaPrijava({ dodajToken }) {
 		navigate1(path);
 	};
 
+	// const notify = () => toast('Greska prilikom registracije');
+
 	return (
 		<div>
 			<form className="forma" onSubmit={handleLogin}>
@@ -54,7 +80,7 @@ function FormaPrijava({ dodajToken }) {
 					Prijava
 				</h2>
 				<div className="form-group">
-					<label for="formGroupExampleInput">Email</label>
+					<label htmlFor="formGroupExampleInput">Email</label>
 					<input
 						type="email"
 						className="form-control"
@@ -65,7 +91,7 @@ function FormaPrijava({ dodajToken }) {
 					/>
 				</div>
 				<div className="form-group">
-					<label for="formGroupExampleInput2">Lozinka</label>
+					<label htmlFor="formGroupExampleInput2">Lozinka</label>
 					<input
 						type="password"
 						className="form-control"
@@ -80,11 +106,11 @@ function FormaPrijava({ dodajToken }) {
 						Prijava
 					</button>
 				</div>
-				{/* <div className="btnForma1">
+				<div className="btnForma1">
 					<button className="dugme2" type="submit" onClick={RouteChange1}>
 						Promeni lozinku?
 					</button>
-				</div> */}
+				</div>
 				<div className="btnForma1">
 					<button className="dugme3" type="submit" onClick={routeChange}>
 						Još uvek niste registrovani?
