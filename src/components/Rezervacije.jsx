@@ -1,21 +1,66 @@
 import React from 'react';
 import Dugme from './Dugme.jsx';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function Rezervacije({ gradoviRezervacije, ukupno }) {
-	const [ rezervacije, setRezervacije ] = useState([]);
+function Rezervacije({ gradoviRezervacije, ukupno, korisnik, token }) {
+	const [ rezervacije, setRezervacije ] = useState({
+		name: '',
+		status: '',
+		user_id: 0,
+		city_id: 0
+	});
 
 	function dodajRezervacije(e) {
-		gradoviRezervacije.map((grad) => {
-			setRezervacije(grad);
-			axios
-				.post('URL', rezervacije)
-				.then((res) => {
-					console.log(res.data);
-				})
-				.catch((e) => console.log(e));
-		});
+		e.preventDefault();
+		if (gradoviRezervacije != null) {
+			gradoviRezervacije.map((grad) => {
+				// var data = JSON.stringify({
+				// 	name: 'RezervacijaOpet',
+				// 	status: 'Prihvacena',
+				// 	user_id: 3,
+				// 	city_id: 1
+				// });
+
+				var rez = {
+					name: grad.naziv + '',
+					status: grad.broj + '.',
+					user_id: korisnik,
+					city_id: grad.id
+				};
+
+				setRezervacije(rez);
+				console.log(rez);
+				// console.log(korisnik);
+
+				var config = {
+					method: 'post',
+					url: 'http://127.0.0.1:8000/api/reservations',
+					headers: {
+						Authorization: 'Bearer ' + window.sessionStorage.getItem('auth_token')
+					},
+					data: rezervacije
+				};
+
+				axios(config)
+					.then(function(response) {
+						console.log(response.data);
+						// alert('Uspesno ste kreirali rezervaciju!');
+					})
+					.catch(function(error) {
+						console.log(error);
+						alert('Greska prilikom kreiranja rezervacija');
+					});
+
+				// setRezervacije({ name: grad.naziv, status: grad.cena, user_id: korisnik, city_id: grad.id });
+				// axios
+				// 	.post('http://127.0.0.1:8000/api/reservations', rezervacije)
+				// 	.then((res) => {
+				// 		console.log(res.data);
+				// 	})
+				// 	.catch((e) => console.log(e));
+			});
+		}
 	}
 
 	return (
@@ -44,11 +89,14 @@ function Rezervacije({ gradoviRezervacije, ukupno }) {
 					</tbody>
 				</table>
 			</div>
-			<div className="dugmeKomponenta">
+			<div className="dugmeKomponentaRezervacije">
 				<Dugme />
 			</div>
-			<div className="dugmeKomponenta">
-				<button className="dugmeSortiranje" onClick={dodajRezervacije}>
+			<div className="dugmeKomponentaPotvrda">
+				<button
+					className="dugmePotvrdaRezervacije"
+					onClick={token == null ? () => alert('Molimo Vas da se ulogujete') : () => dodajRezervacije}
+				>
 					Potvrdi rezervacije
 				</button>
 			</div>

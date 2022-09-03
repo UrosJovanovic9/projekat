@@ -5,16 +5,39 @@ import { useState, useEffect } from 'react';
 
 //useEffect -> osluskuje promene i izvrsava funkciju u zavisnosti da li su se promenljive unutar komponente promenile ili ne.
 
+
+
 function UpravljajRezervacijama() {
 	const [ rezervacije, setRezervacije ] = useState();
 	useEffect(() => {
 		if(rezervacije == null){
-			axios.get('URL').then((res) => {
-				setRezervacije(res.data.rezervacije); // res.data.kakoSeZoveNizKojiKupiPodatkeIzBaze
+			axios.get('http://127.0.0.1:8000/api/reservationsadmin').then((res) => {
+				setRezervacije(res.data.reservations); // res.data.kakoSeZoveNizKojiKupiPodatkeIzBaze
 			});
 		}
 	}, [rezervacije])
-	
+
+	function ukloni(id){
+		// e.preventDefault();
+		var config = {
+			method: 'delete',
+			url: 'http://127.0.0.1:8000/api/reservations/' + id,
+			headers: { 
+			  'Authorization': 'Bearer ' + window.sessionStorage.getItem('auth_token'), 
+			},
+		  };
+		  
+		  axios(config)
+		  .then(function (response) {
+			console.log(response.data);
+			alert("Rezervacija je uspesno obrisana!")
+		  })
+		  .catch(function (error) {
+			console.log(error);
+		  });
+	}
+
+	////////////////////////////////////////////////////////////////////////
 
 	return (
 		<div className="rezervacije">
@@ -30,21 +53,25 @@ function UpravljajRezervacijama() {
 					<tbody>
 						<tr>
 							<th>Naziv Rezervacije</th>
-							<th>Atribut 1 </th>
-							<th>Atribut 2 </th>
+							<th>Status(broj rezervacija) </th>
+							<th>Email korisnika</th>
+							<th></th>
+							{/* <th>Grad</th> */}
 						</tr>
 						{ rezervacije == null ? <></> : rezervacije.map((rezervacija) => (
 							<tr key = {rezervacija.id}>
-								<td>{rezervacija.naziv}</td>
-								<td>{rezervacija.atribut1}</td>
-								<td>{rezervacija.atribut2}</td>
+								<td>{rezervacija.name}</td>
+								<td>{rezervacija.status}</td>
+								<td>{rezervacija.user.email}</td>
+								<td><button className="dugmeObrisiRezervaciju" onClick={()=>ukloni(rezervacija.id)}>Obrisi</button></td>
+								{/* <td>{rezervacija.city.name}</td> */}
 							</tr>
 						))}
-						<tr>
+						{/* <tr>
 							<td>Naziv</td>
 							<td> nesto 1</td>
 							<td> nesto 2</td>
-						</tr>
+						</tr> */}
 					</tbody>
 				</table>
 			</div>

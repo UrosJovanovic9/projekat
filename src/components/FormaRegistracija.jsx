@@ -7,7 +7,6 @@ function FormaRegistracija() {
 
 	const [ podaciKorisnika, setPodaciKorisnika ] = useState({
 		name: '',
-		surname: '',
 		email: '',
 		password: ''
 	});
@@ -21,10 +20,10 @@ function FormaRegistracija() {
 	function handleRegister(e) {
 		e.preventDefault();
 		axios
-			.post('URL', podaciKorisnika)
+			.post('http://127.0.0.1:8000/api/register', podaciKorisnika)
 			.then((res) => {
 				console.log(res.data);
-				navigatePrijava(`/prijava`);
+				navigatePrijava(`/`);
 			})
 			.catch((e) => console.log(e));
 	}
@@ -35,7 +34,7 @@ function FormaRegistracija() {
 
 	let navigate = useNavigate();
 	const routeChange = () => {
-		let path = `/prijava`;
+		let path = `/`;
 		navigate(path);
 	};
 
@@ -46,12 +45,24 @@ function FormaRegistracija() {
 					Registracija
 				</h2>
 				<div className="form-group">
+					<label for="formGroupExampleInput">Ime</label>
+					<input
+						type="name"
+						className="form-control"
+						id="formGroupExampleInput3"
+						placeholder="Ime"
+						name="name"
+						onInput={handleInput}
+					/>
+				</div>
+				<div className="form-group">
 					<label for="formGroupExampleInput">Email</label>
 					<input
 						type="email"
 						className="form-control"
 						id="formGroupExampleInput1"
 						placeholder="Email"
+						name="email"
 						onInput={handleInput}
 					/>
 				</div>
@@ -62,29 +73,21 @@ function FormaRegistracija() {
 						className="form-control"
 						id="formGroupExampleInput2"
 						placeholder="Lozinka"
+						name="password"
 						onInput={handleInput}
 					/>
 				</div>
-				<div className="form-group">
-					<label for="formGroupExampleInput">Ime</label>
-					<input
-						type="name"
-						class="form-control"
-						id="formGroupExampleInput3"
-						placeholder="Ime"
-						onInput={handleInput}
-					/>
-				</div>
-				<div className="form-group">
+
+				{/* <div className="form-group">
 					<label for="formGroupExampleInput2">Prezime</label>
 					<input
 						type="surname"
-						class="form-control"
+						className="form-control"
 						id="formGroupExampleInput4"
 						placeholder="Prezime"
 						onInput={handleInput}
 					/>
-				</div>
+				</div> */}
 				<div className="btnForma">
 					<button className="dugme1" type="submit">
 						Registracija
