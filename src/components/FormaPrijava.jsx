@@ -45,7 +45,36 @@ function FormaPrijava({ dodajToken, dodajKorisnika }) {
 				console.log(response.data);
 				window.sessionStorage.setItem('auth_token', response.data.access_token);
 				dodajToken(response.data.access_token); // Funkcija
+				// console.log(response.data.data.id);
 				dodajKorisnika(response.data.data.id);
+				navigateDestinacije(`/turistickeDestinacije`);
+			})
+			.catch(function(error) {
+				console.log(error);
+				alert('Neuspesno logovanje');
+				navigateDestinacije(`/`);
+			});
+	}
+
+	function handleLoginAdmin(e) {
+		e.preventDefault();
+		var config = {
+			method: 'post',
+			url: 'http://127.0.0.1:8000/api/admin/login',
+			headers: {
+				Authorization: 'Bearer ' + window.sessionStorage.getItem('admin_auth_token')
+			},
+			data: podaciKorisnika
+		};
+
+		console.log(podaciKorisnika);
+
+		axios(config)
+			.then(function(response) {
+				// console.log(response.data);
+				console.log(response.data.token);
+				window.sessionStorage.setItem('admin_auth_token', response.data.token);
+				dodajToken(response.data.token);
 				navigateDestinacije(`/turistickeDestinacije`);
 			})
 			.catch(function(error) {
@@ -75,7 +104,7 @@ function FormaPrijava({ dodajToken, dodajKorisnika }) {
 
 	return (
 		<div>
-			<form className="forma" onSubmit={handleLogin}>
+			<form className="forma">
 				<h2 className="prijavaforma" for="forma">
 					Prijava
 				</h2>
@@ -102,15 +131,20 @@ function FormaPrijava({ dodajToken, dodajKorisnika }) {
 					/>
 				</div>
 				<div className="btnForma">
-					<button className="dugme1" type="submit">
+					<button className="dugme1" type="submit" onClick={handleLogin}>
 						Prijava
 					</button>
 				</div>
-				<div className="btnForma1">
+				<div className="btnForma">
+					<button className="dugme4" type="submit" onClick={handleLoginAdmin}>
+						Prijava(admin)
+					</button>
+				</div>
+				{/* <div className="btnForma1">
 					<button className="dugme2" type="submit" onClick={RouteChange1}>
 						Promeni lozinku?
 					</button>
-				</div>
+				</div> */}
 				<div className="btnForma1">
 					<button className="dugme3" type="submit" onClick={routeChange}>
 						Još uvek niste registrovani?
