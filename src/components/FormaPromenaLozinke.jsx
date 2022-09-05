@@ -46,7 +46,7 @@ function FormaPromenaLozinke(korisnik) {
 			})
 			.catch(function(error) {
 				console.log(error.response.data);
-				alert('Greska prilikom promene lozinke. Lozinka mora imati minimum pet karaktera');
+				alert('Greska prilikom promene lozinke. Lozinka mora imati minimum pet karaktera!');
 			});
 	}
 

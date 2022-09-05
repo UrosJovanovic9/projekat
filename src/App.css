@@ -48,8 +48,8 @@
 .pretraga{
   color: black;
   margin-left: 50px;
-  margin-bottom: 50px;
-  padding-top:15px;
+  margin-bottom: 30px;
+  /* padding-top:15px; */
   font-size: 30px;
   border-top: none;
   border-left: none;
@@ -89,6 +89,14 @@
 }
 
 .pregled{
+  padding-top: 10px;
+  font-style: bold;
+  color: black;
+  padding-left: 30px;
+  text-decoration: none;
+}
+
+.pregledOdjava{
   padding-top: 10px;
   font-style: bold;
   color: black;
@@ -232,7 +240,7 @@
 
 }
 .btn1:hover{
-  font-size: 25px;
+  font-size: 21px;
   font-style: bold;
   background-color:transparent;
   transition:0.4s;
@@ -256,7 +264,7 @@
   box-shadow: 0 3px #999;
 }
 .btn2:hover{
-  font-size: 25px;
+  font-size: 21px;
   font-style: bold;
   background-color:transparent;
   transition: 0.4s;
@@ -281,7 +289,7 @@
   box-shadow: 0 3px #999;
 }
 .btn3:hover{
-  font-size: 25px;
+  font-size: 21px;
   font-style: bold;
   background-color:transparent;
   transition: 0.4s;
@@ -354,6 +362,22 @@
 }
 
 .dugme1:hover{
+  background-color:white;
+  color:rgb(68, 96, 255);
+}
+
+.dugme4{
+  border-radius: 10px !important;
+  position: center;
+  background-color:rgb(68, 96, 255);
+  border-color:rgb(68, 96, 255);
+  color:white;
+  width: 100%;
+  text-align: center;
+  transition: 0.4s;
+}
+
+.dugme4:hover{
   background-color:white;
   color:rgb(68, 96, 255);
 }
@@ -478,7 +502,13 @@ tr:hover {
 .dugmeKomponenta{
   position: center;
   text-align: center;
-  margin-bottom: 0px;
+  margin-bottom: 50px;
+}
+
+.dugmeKomponentaRezervacije{
+  position: center;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 .dugmeSortiranje{
@@ -500,7 +530,7 @@ tr:hover {
 .dugmeSortiranje:hover{
   background-color: rgb(255, 255, 255);
   color: rgb(68, 96, 255);
-  font-size: 27px; 
+  font-size: 26px; 
 }
 
 .dugmeSortiranje:active{
@@ -508,11 +538,41 @@ tr:hover {
   transform: translateY(5px);
 }
 
-.dugmePotvrdaRezervacija{
+.dugmeKomponentaPotvrda{
   position: center;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
+
+.dugmePotvrdaRezervacije{
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px ;
+  border : 1px solid rgb(68, 96, 255);
+  position: center;
+  background-color:rgb(68, 96, 255);
+  color:white;
+  padding:10px;
+  font-size:25px;
+  text-align: center;
+  margin-bottom: 90px;
+  /* margin-bottom: 20px; */
+
+  transition-duration: 0.4s;
+}
+
+.dugmePotvrdaRezervacije:hover{
+  background-color: rgb(255, 255, 255);
+  color: rgb(68, 96, 255);
+  font-size: 26px; 
+}
+
+.dugmePotvrdaRezervacije:active{
+  box-shadow: 0 3px #666;
+  transform: translateY(5px);
+}
+
+
 
 /* /////////////////////////////////////////////////////
 ////////////KRAJ STRANICE REZERVACIJE//////////////////
@@ -632,6 +692,36 @@ table.tabelaDestinacije{
   background-color: rgb(255, 255, 255);
   color: rgb(255, 51, 51);
   font-size: 25px;
+}
+
+.dugmeObrisiRezervaciju{
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  /* border-radius: 10px; */
+  border : 1px solid rgb(255, 51, 51);
+  position: center;
+  background-color:rgb(255, 51, 51);
+  color:white;
+  /* padding:5px; */
+  font-size:20px;
+  text-align: center;
+  /* margin-bottom: 90px; */
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* padding-left: 5px; */
+  /* padding-right: 5px; */
+
+  transition-duration: 0.4s;
+}
+.dugmeObrisiRezervaciju:hover{
+  background-color: rgb(255, 255, 255);
+  color: rgb(255, 51, 51);
+  /* font-size: 20px; */
+}
+.dugmeObrisiRezervaciju:active{
+  box-shadow: 0 3px #666;
+  transform: translateY(3px);
 }
 
 .dugmeObrisi:active{

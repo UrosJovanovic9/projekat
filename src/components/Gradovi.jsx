@@ -1,7 +1,7 @@
 import React from 'react';
 import JedanGrad from './JedanGrad.jsx';
 // import 'bootstrap/dist/css/bootsrtap.min.css';
-import { Jumbotron, Container } from 'react-bootstrap';
+// import { Jumbotron, Container } from 'react-bootstrap';
 
 function Gradovi({ gradovi, dodaj, ukloni }) {
 	return (

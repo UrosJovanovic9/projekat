@@ -3,18 +3,14 @@ import Dugme from './Dugme.jsx';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-function Rezervacije({ gradoviRezervacije, ukupno, korisnik, token }) {
-	const [ rezervacije, setRezervacije ] = useState({
-		name: '',
-		status: '',
-		user_id: 0,
-		city_id: 0
-	});
+function Rezervacije({ gradoviRezervacije, ukupno, korisnik, token, refreshAgain }) {
+	// const [ rezervacije, setRezervacije ] = useState([]);
+	// setRezervacije(gradoviRezervacije);
 
 	function dodajRezervacije(e) {
 		e.preventDefault();
 		if (gradoviRezervacije != null) {
-			gradoviRezervacije.map((grad) => {
+			gradoviRezervacije.forEach((grad) => {
 				// var data = JSON.stringify({
 				// 	name: 'RezervacijaOpet',
 				// 	status: 'Prihvacena',
@@ -29,8 +25,6 @@ function Rezervacije({ gradoviRezervacije, ukupno, korisnik, token }) {
 					city_id: grad.id
 				};
 
-				setRezervacije(rez);
-				console.log(rez);
 				// console.log(korisnik);
 
 				var config = {
@@ -39,13 +33,14 @@ function Rezervacije({ gradoviRezervacije, ukupno, korisnik, token }) {
 					headers: {
 						Authorization: 'Bearer ' + window.sessionStorage.getItem('auth_token')
 					},
-					data: rezervacije
+					data: rez
 				};
 
 				axios(config)
 					.then(function(response) {
 						console.log(response.data);
-						// alert('Uspesno ste kreirali rezervaciju!');
+						alert('Uspesno ste kreirali rezervaciju!');
+						refreshAgain();
 					})
 					.catch(function(error) {
 						console.log(error);
@@ -95,7 +90,7 @@ function Rezervacije({ gradoviRezervacije, ukupno, korisnik, token }) {
 			<div className="dugmeKomponentaPotvrda">
 				<button
 					className="dugmePotvrdaRezervacije"
-					onClick={token == null ? () => alert('Molimo Vas da se ulogujete') : () => dodajRezervacije}
+					onClick={token == null ? () => alert('Molimo Vas da se ulogujete') : dodajRezervacije}
 				>
 					Potvrdi rezervacije
 				</button>

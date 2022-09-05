@@ -1,32 +1,68 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdTravelExplore } from 'react-icons/md';
-import { BsSearch } from 'react-icons/bs';
-import axios from "axios";
+// import { BsSearch } from 'react-icons/bs';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function NavigationBar({ nav, token }) {
+	let navigate = useNavigate();
 
-	function handleLogout(){
-		var config = {
-			method: "post",
-			url : "URL",
-			headers : {
-				'Authorization' : "Bearer" + window.sessionStorage.getItem("auth_token"),
-			},
-		};
-		axios(config).then((res) => {
-			console.log(res.data);
-			window.sessionStorage.setItem("auth_token", null);
-		});
+	function handleLogout(e){
+		// e.preventDefault();
+		if(window.sessionStorage.getItem('auth_token') !== 'null'){
+			handleLogoutUser();
+		}
+		if(window.sessionStorage.getItem('admin_auth_token') !== 'null'){
+			handleLogoutAdmin();
+		}
+		
 	}
 
+	function handleLogoutUser(e) {
+		// e.preventDefault();
+		var config = {
+			method: 'post',
+			url: 'http://127.0.0.1:8000/api/logout',
+			headers: {
+				Authorization: 'Bearer ' + window.sessionStorage.getItem('auth_token')
+			}
+		};
+
+		axios(config).then((res) => {
+			console.log(res.data);
+			window.sessionStorage.setItem('auth_token', null);
+			navigate('/');
+		}).catch((error) => console.log(error));
+	}
+
+	function handleLogoutAdmin(e){
+		// e.preventDefault();
+		var config = {
+			method: 'post',
+			url: 'http://127.0.0.1:8000/api/admin/logout',
+			headers: {
+				Authorization: 'Bearer ' + window.sessionStorage.getItem('admin_auth_token')
+			}
+		};
+
+		axios(config).then((res) => {
+			console.log(res.data);
+			window.sessionStorage.setItem('admin_auth_token', null);
+			navigate('/');
+		}).catch((error) => console.log(error));
+	}
+	
 
 
 	return (
 		<div className={nav === 1 ? 'navigationBar' : 'bottomBar'}>
-			{nav === 1 ? 
-			(<div className="logo">
-				<MdTravelExplore />
-			</div>) : (<></>) }
+			{nav === 1 ? (
+				<div className="logo">
+					<MdTravelExplore />
+				</div>
+			) : (
+				<></>
+			)}
 			{/* <div className="logo">
 				<MdTravelExplore />
 			</div> */}
@@ -42,16 +78,23 @@ function NavigationBar({ nav, token }) {
 				Upravljaj rezervacijama
 			</Link>
 
-			<Link to="/kontakt" className="pregled" onClick = {window['initMap']} >
+			<Link to="/kontakt" className="pregled" onClick={window['initMap']}>
 				Kontakt
 			</Link>
 
-			<Link to="/upravljajDestinacijama" className="pregled">
-				Upravljaj destinacijama
+			<Link to="/promenaLozinke" className="pregled">
+				Promeni lozinku
 			</Link>
 
-			{token == null ? (<Link to="/prijava" className="pregled">Prijava</Link>) : (<Link to="/" className="pregled" onClick = {handleLogout}>Odjavi se</Link>)}
-			
+			{token == null ? (
+				<Link to="/" className="pregled">
+					Prijava
+				</Link>
+			) : (
+				<Link to="/" className="pregledOdjava" onClick={handleLogout}>
+					Odjavi se
+				</Link>
+			)}
 
 			<Link to="/promenaLozinke" className="pregled" />
 

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Gradovi from "./components/Gradovi";
 import FormaPrijava from "./components/FormaPrijava";
@@ -14,7 +14,7 @@ import Amsterdam from "./img/Amsterdam.jpg";
 import Rim from "./img/Rim.jpg";
 import Bern from "./img/Bern.jpg";
 import Kopenhagen from "./img/Kopenhagen.jpg";
-import Oslo from "./img/Oslo.jpg";
+// import Oslo from "./img/Oslo.jpg";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Rezervacije from './components/Rezervacije';
@@ -22,24 +22,27 @@ import FormaPromenaLozinke from './components/FormaPromenaLozinke';
 import Kontakt from './components/Kontakt';
 import UpravljajRezervacijama from './components/UpravljajRezervacijama';
 import UpravljajDestinacijama from './components/UpravljajDestinacijama';
-import axios from 'axios';
+// import axios from 'axios';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 
 
 function App() {
 
 const [rezervisaniGrad, setRezervisaniGrad] = useState([]);
+const [rezGrad, setRezGrad] = useState([]);
 const [ ukupno, setUkupno ] = useState(0);
 
 
-  const[gradoviBaza, setGradoviBaza] = useState();
-  useEffect(() => {
-		if(gradoviBaza == null){
-			axios.get('URL').then((res) => {
-				setGradoviBaza(res.data.gradoviBaza);
-			});
-		}
-	}, [gradoviBaza])
+  // const[gradoviBaza, setGradoviBaza] = useState();
+  // useEffect(() => {
+	// 	if(gradoviBaza == null){
+	// 		axios.get('URL').then((res) => {
+	// 			setGradoviBaza(res.data.gradoviBaza);
+	// 		});
+	// 	}
+	// }, [gradoviBaza])
 
 
   const [gradovi, setGradovi] = useState([
@@ -133,19 +136,19 @@ const [ ukupno, setUkupno ] = useState(0);
       cena: 450,
       opisGrada: "Kopenhagen je glavni i najveći grad Danske. Savremeni naziv je iskvaren oblik starog imena Købmandshavn koje znači „trgovačka luka“. Prostire se na površini od 526 km². U samom gradu živi oko 542 hiljade stanovnika, a na širem području oko 1,2 miliona."
     },
-    {
-      id: 11,
-      broj: 0,
-      naziv: "Oslo",
-      opis: "Oslo | Norveška",
-      slika: Oslo,
-      cena: 370,
-      opisGrada: "Oslo glavni je grad Norveške. Istovremeno to je i najveći grad države, u čijem metropolitenskom području živi oko 1/4 stanovništva Norveške. Grad je takođe jedini samostalni grad-okrug u državi, a vrši i ulogu upravnog sedišta okruga Akershus, koji okružuje Oslo i obuhvata njegova predgrađa. Oslo je kulturno, naučno i upravno središte Norveške. Grad je takođe važno središte trgovine, bankarstva, industrije i pomorstva Norveške i Evrope."
-    },
+    // {
+    //   id: 11,
+    //   broj: 0,
+    //   naziv: "Oslo",
+    //   opis: "Oslo | Norveška",
+    //   slika: Oslo,
+    //   cena: 370,
+    //   opisGrada: "Oslo glavni je grad Norveške. Istovremeno to je i najveći grad države, u čijem metropolitenskom području živi oko 1/4 stanovništva Norveške. Grad je takođe jedini samostalni grad-okrug u državi, a vrši i ulogu upravnog sedišta okruga Akershus, koji okružuje Oslo i obuhvata njegova predgrađa. Oslo je kulturno, naučno i upravno središte Norveške. Grad je takođe važno središte trgovine, bankarstva, industrije i pomorstva Norveške i Evrope."
+    // },
   ]);
 
 
-  // const dodajNoviGrad = () =>{
+  // function dodajNoviGrad (){
   //   setGradovi([... gradovi, {
   //     id : gradovi.length,
   //     broj:0,
@@ -157,14 +160,27 @@ const [ ukupno, setUkupno ] = useState(0);
   //   }])
   // }
 
+
   const[token, setToken] = useState(); 
   function dodajToken(auth_token){
     setToken(auth_token);
   }
 
+  const[korisnik, setKorisnik] = useState(0);
+  function dodajKorisnika(korisnik){
+    setKorisnik(korisnik);
+  }
+
+
   function refresh(){
     let noviGradovi = gradovi.filter((grad) => grad.broj > 0);
     setRezervisaniGrad(noviGradovi);
+  }
+
+  function refreshAgain(){
+    rezervisaniGrad.map((grad)=> grad.broj = 0);
+    setRezervisaniGrad(rezGrad);
+    setUkupno(0);
   }
 
   function dodajGrad(id){
@@ -207,12 +223,12 @@ const [ ukupno, setUkupno ] = useState(0);
   return (
     <BrowserRouter className="App">
     <div className = "Appdiv">
-    <NavigationBar nav = {1} token = {token}></NavigationBar>
+    {/* <NavigationBar nav = {1} token = {token}></NavigationBar> */}
       <Routes>
       <Route
         path = "/"
         element = {
-          <FormaPrijava/>
+          <FormaPrijava dodajToken={dodajToken} dodajKorisnika = {dodajKorisnika}/>
         }
         />
 
@@ -221,6 +237,7 @@ const [ ukupno, setUkupno ] = useState(0);
           path = "/turistickeDestinacije"
           element ={
             <>
+            <NavigationBar nav = {1} token = {token}></NavigationBar>
       <div className="jumbotron">
   <h1 className="display-1">Dobro došli!</h1>
   <p className="lead">Ovde možete rezervisati Vaše putovanje i izabrati neku od najatraktivnijih destinacija na svetu i to po najpovoljnijim cenama.</p>
@@ -228,49 +245,68 @@ const [ ukupno, setUkupno ] = useState(0);
 </div>
             <h1 className="nazivKontinenta">Trenutne destinacije</h1>
             <Gradovi gradovi = {gradovi} dodaj = {dodajGrad} ukloni = {ukloniGrad}/>
+            <NavigationBar nav = {0} token = {token}></NavigationBar>
             </>
           }
         />
         <Route
         path = "/pregledRezervacija/*"
         element = {
-          <Rezervacije gradoviRezervacije = {rezervisaniGrad} ukupno = {ukupno} />
+          <>
+          <NavigationBar nav = {1} token = {token}></NavigationBar>
+          <Rezervacije gradoviRezervacije = {rezervisaniGrad} ukupno = {ukupno} korisnik = {korisnik} token = {token} refreshAgain = {refreshAgain}/>
+          <NavigationBar nav = {0} token = {token}></NavigationBar>
+          </>
+          
         }
         />
         <Route
         path = "/upravljajRezervacijama/*"
         element = {
+          <>
+          <NavigationBar nav = {1} token = {token}></NavigationBar>
           <UpravljajRezervacijama/>
+          <NavigationBar nav = {0} token = {token}></NavigationBar>
+          </>
+          
         }
         />
 
         <Route
         path = "/kontakt"
         element = {
+          <>
+          <NavigationBar nav = {1} token = {token}></NavigationBar>
           <Kontakt/>
+          <NavigationBar nav = {0} token = {token}></NavigationBar>
+          </>
         }
         />
 
         <Route
         path = "/upravljajDestinacijama/*"
         element = {
+          <>
+          <NavigationBar nav = {1} token = {token}></NavigationBar>
           <UpravljajDestinacijama/>
+          <NavigationBar nav = {0} token = {token}></NavigationBar>
+          </>
+        }
+        />
+
+        <Route
+        path = "/promenaLozinke/*"
+        element = {
+          <FormaPromenaLozinke korisnik = {korisnik}/>
         }
         />
 
         {/* <Route
-        path = "/promenaLozinke/*"
-        element = {
-          <FormaPromenaLozinke/>
-        }
-        /> */}
-
-        <Route
         path = "/prijava/*"
         element = {
           <FormaPrijava dodajToken = {dodajToken}/>
         }
-        />
+        /> */}
         <Route
         path = "/registracija/*"
         element = {
@@ -278,7 +314,7 @@ const [ ukupno, setUkupno ] = useState(0);
         }
         />
       </Routes>
-      <NavigationBar nav = {0}></NavigationBar>
+      {/* <NavigationBar nav = {0}></NavigationBar> */}
 
     </div>
   </BrowserRouter>

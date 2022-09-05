@@ -11,29 +11,55 @@ function UpravljajRezervacijama() {
 	const [ rezervacije, setRezervacije ] = useState();
 	useEffect(() => {
 		if(rezervacije == null){
-			axios.get('http://127.0.0.1:8000/api/reservationsadmin').then((res) => {
-				setRezervacije(res.data.reservations); // res.data.kakoSeZoveNizKojiKupiPodatkeIzBaze
-			});
+			// console.log("Token: " + window.sessionStorage.getItem('auth_token'));
+			// axios.get('http://127.0.0.1:8000/api/reservations').then((res) => {
+			// 	setRezervacije(res.data.reservations); // res.data.kakoSeZoveNizKojiKupiPodatkeIzBaze
+			// });
+
+			var config = {
+				method: 'get',
+				url: 'http://127.0.0.1:8000/api/admin/reservations',
+				headers: { 
+				  Authorization: 'Bearer ' + window.sessionStorage.getItem('admin_auth_token')
+				},
+				data:null
+			  };
+			  
+			  axios(config)
+			  .then(function (response) {
+				console.log(response.data);
+				setRezervacije(response.data.reservations);
+				// alert("Rezervacija je uspesno obrisana!")
+			  })
+			  .catch(function (error) {
+				console.log(error);
+			  });
+
+
+
 		}
 	}, [rezervacije])
 
 	function ukloni(id){
 		// e.preventDefault();
+
 		var config = {
 			method: 'delete',
-			url: 'http://127.0.0.1:8000/api/reservations/' + id,
+			url: 'http://127.0.0.1:8000/api/admin/reservations/' + id,
 			headers: { 
-			  'Authorization': 'Bearer ' + window.sessionStorage.getItem('auth_token'), 
+			  Authorization: 'Bearer ' + window.sessionStorage.getItem('admin_auth_token')
 			},
+			data:null
 		  };
 		  
 		  axios(config)
 		  .then(function (response) {
 			console.log(response.data);
-			alert("Rezervacija je uspesno obrisana!")
+			alert("Rezervacija je uspesno obrisana!");
 		  })
 		  .catch(function (error) {
 			console.log(error);
+			// alert("Greska prilikom brisanja rezervacije!");
 		  });
 	}
 

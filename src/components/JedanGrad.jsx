@@ -1,5 +1,5 @@
 import React from 'react';
-import { BsHeart, BsCheck2, BsCheckLg, BsEye, BsDashLg, BsPlusLg } from 'react-icons/bs';
+import { BsCheckLg } from 'react-icons/bs';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { VscChromeClose } from 'react-icons/vsc';
 import { useState } from 'react';
@@ -8,7 +8,7 @@ function JedanGrad({ grad, dodaj, ukloni }) {
 	const [ opisGrada, setOpisGrada ] = useState('');
 	const [ i, seti ] = useState(0);
 	function prikaziOpis() {
-		if (i % 2 == 0) {
+		if (i % 2 === 0) {
 			setOpisGrada(grad.opisGrada);
 		} else {
 			setOpisGrada('');

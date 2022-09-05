@@ -94,11 +94,11 @@ function FormaPrijava({ dodajToken, dodajKorisnika }) {
 		navigate(path);
 	};
 
-	let navigate1 = useNavigate();
-	const RouteChange1 = () => {
-		let path = `/promenaLozinke/*`;
-		navigate1(path);
-	};
+	// let navigate1 = useNavigate();
+	// const RouteChange1 = () => {
+	// 	let path = `/promenaLozinke/*`;
+	// 	navigate1(path);
+	// };
 
 	// const notify = () => toast('Greska prilikom registracije');
 

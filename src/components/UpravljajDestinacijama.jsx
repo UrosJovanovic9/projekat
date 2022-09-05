@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import FloatingLabel  from 'react-bootstrap-floating-label';
-import Form from 'react-bootstrap-floating-label'
+// import FloatingLabel  from 'react-bootstrap-floating-label';
+// import Form from 'react-bootstrap-floating-label'
 import axios from "axios";
 
 function UpravljajDestinacijama() {
